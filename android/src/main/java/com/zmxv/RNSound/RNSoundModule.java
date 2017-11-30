@@ -281,8 +281,12 @@ public class RNSoundModule extends ReactContextBaseJavaModule {
   public void setLooping(final Integer key, final Boolean looping) {
     MediaPlayer player = this.playerPool.get(key);
     if (player != null) {
-      player.prepare();
-      player.setLooping(looping);
+      try {
+        player.prepare();
+        player.setLooping(looping);
+      } catch (Exception e) {
+              //Catches the exception: java.lang.RuntimeException·Illegal callback invocation from native module
+      }
     }
   }
 
