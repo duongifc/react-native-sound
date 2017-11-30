@@ -281,6 +281,7 @@ public class RNSoundModule extends ReactContextBaseJavaModule {
   public void setLooping(final Integer key, final Boolean looping) {
     MediaPlayer player = this.playerPool.get(key);
     if (player != null) {
+      player.prepare();
       player.setLooping(looping);
     }
   }
